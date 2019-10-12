@@ -13,3 +13,5 @@ eureka:
       defaultZone: http://test:test@127.0.0.1:8888/eureka/
   instance:
     prefer-ip-address: true # 将自己的 IP 地址注册到 Eureka 服务中
+    ip-address: 127.0.0.1
+    instance-id: my-own-id
