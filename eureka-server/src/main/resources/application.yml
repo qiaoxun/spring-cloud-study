@@ -1,0 +1,21 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  client:
+    registerWithEureka: false # 是否将自己注册到 Eureka 服务中，本身就是服务所以无需注册
+    fetchRegistry: false # 是否从 Eureka 中获取注册信息
+    serviceUrl: # Eureka 客户端与 Eureka 服务端进行交互的地址
+      defaultZone: http://127.0.0.1:${server.port}/eureka/
+
+spring:
+  security:
+    basic:
+      enable: true #  开启基于 http basic 的认证
+    user:
+      name: test
+      password: test

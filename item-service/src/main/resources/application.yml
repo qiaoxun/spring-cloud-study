@@ -1,0 +1,15 @@
+server:
+  port: 8891
+
+spring:
+  application:
+    name: item-service
+
+eureka:
+  client:
+    registerWithEureka: true # 是否将自己注册到 Eureka 服务中，本身就是服务所以无需注册
+    fetchRegistry: true # 是否从 Eureka 中获取注册信息
+    serviceUrl: # Eureka 客户端与 Eureka 服务端进行交互的地址
+      defaultZone: http://test:test@127.0.0.1:8888/eureka/
+  instance:
+    prefer-ip-address: true # 将自己的 IP 地址注册到 Eureka 服务中
