@@ -32,6 +32,11 @@ public class OrderController {
         return order;
     }
 
+    /**
+     * need comment @LoadBalance annotation line at RestTemplateConfig
+     * @param id
+     * @return
+     */
     @GetMapping("/getOrderByIdEureka/{id}")
     public Order getOrderByIdEureka(@PathVariable int id) {
         String itemServiceId = "item-service";
@@ -42,6 +47,20 @@ public class OrderController {
 
         Item item = restTemplate.getForObject("http://" + url + "/item/getItemByOrderId/" + id, Item.class);
         System.out.println("url is " + url);
+        Order order = new Order("name " + id, id);
+        order.setItem(item);
+        return order;
+    }
+
+    /**
+     * RestTemplate need @LoadBalance annotation
+     * @param id
+     * @return
+     */
+    @GetMapping("/getOrderByIdEurekaLoadBalance/{id}")
+    public Order getOrderByIdEurekaLoadBalance(@PathVariable int id) {
+        String itemServiceId = "item-service";
+        Item item = restTemplate.getForObject("http://" + itemServiceId + "/item/getItemByOrderId/" + id, Item.class);
         Order order = new Order("name " + id, id);
         order.setItem(item);
         return order;

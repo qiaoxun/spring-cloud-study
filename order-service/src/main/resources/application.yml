@@ -15,3 +15,7 @@ eureka:
     prefer-ip-address: false # 将自己的 IP 地址注册到 Eureka 服务中
   server:
     enable-self-preservation: false
+
+item-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

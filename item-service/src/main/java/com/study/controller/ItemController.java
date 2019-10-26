@@ -12,6 +12,7 @@ public class ItemController {
 
     @GetMapping("/getItemByOrderId/{orderId}")
     public Item getItemByOrderId(@PathVariable int orderId) {
+        System.out.println("getItemByOrderId - 8091");
         return new Item(orderId, orderId + 1, "item " + orderId);
     }
 
