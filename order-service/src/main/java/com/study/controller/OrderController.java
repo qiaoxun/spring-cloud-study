@@ -1,7 +1,10 @@
 package com.study.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.study.domain.Item;
 import com.study.domain.Order;
+import com.study.feign.ItemFeignInterface;
+import com.study.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -23,6 +26,11 @@ public class OrderController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
+
+    @Autowired
+    private OrderService orderService;
+
+
 
     @GetMapping("/getOrderById/{id}")
     public Order getOrderById(@PathVariable int id) {
@@ -65,4 +73,34 @@ public class OrderController {
         order.setItem(item);
         return order;
     }
+
+
+    /**
+     * RestTemplate need @LoadBalance annotation
+     * @param id
+     * @return
+     */
+    @GetMapping("/getOrderByIdEurekaHystrix/{id}")
+    public Order getOrderByIdEurekaHystrix(@PathVariable int id) {
+        Item item = orderService.getItemByIdService(id);
+        Order order = new Order("name " + id, id);
+        order.setItem(item);
+        return order;
+    }
+
+    /**
+     * RestTemplate need @LoadBalance annotation
+     * @param id
+     * @return
+     */
+    @GetMapping("/getOrderByIdEurekaFeign/{id}")
+    public Order getOrderByIdEurekaFeign(@PathVariable int id) {
+        Item item = orderService.getItemByIdServiceFeign(id);
+        Order order = new Order("name " + id, id);
+        order.setItem(item);
+        return order;
+    }
+
+
+
 }
