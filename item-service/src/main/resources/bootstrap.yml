@@ -1,7 +1,15 @@
+eureka:
+  client:
+    serviceUrl: # Eureka 客户端与 Eureka 服务端进行交互的地址
+      defaultZone: http://test:test@127.0.0.1:8888/eureka/
+
 spring:
   cloud:
     config:
       name: microservice
-      uri: http://localhost:8001/
+      # uri: http://localhost:8001/
       profile: dev
       label: master
+      discovery:
+        enabled: true
+        service-id: spring-cloud-config-server
