@@ -93,9 +93,10 @@ public class OrderController {
      * @param id
      * @return
      */
-    @GetMapping("/getOrderByIdEurekaFeign/{id}")
-    public Order getOrderByIdEurekaFeign(@PathVariable int id) {
-        Item item = orderService.getItemByIdServiceFeign(id);
+    @GetMapping("/getOrderByIdEurekaFeign/{id}/{ip}")
+    public Order getOrderByIdEurekaFeign(@PathVariable int id, @PathVariable String ip) {
+        System.out.println("Controller.getItemByIdServiceFeign ip is " + ip);
+        Item item = orderService.getItemByIdServiceFeign(id, ip);
         Order order = new Order("name " + id, id);
         order.setItem(item);
         return order;

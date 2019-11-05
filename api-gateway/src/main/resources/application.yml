@@ -17,6 +17,9 @@ zuul:
       path: /item-service/**
 #      url: http://127.0.0.1:8891
       serviceId: item-service
+    order-service:
+      path: /order-service/**
+      serviceId: order-service
 
 eureka:
   client:

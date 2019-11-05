@@ -1,5 +1,6 @@
 package com.study.service;
 
+import com.loadbalance.KeyHolder;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.study.domain.Item;
 import com.study.feign.ItemFeignInterface;
@@ -34,12 +35,14 @@ public class OrderService {
      * @return
      */
     @HystrixCommand(fallbackMethod = "getItemByIdServiceHystrix")
-    public Item getItemByIdServiceFeign(int id) {
+    public Item getItemByIdServiceFeign(int id, String ip) {
+        System.out.println("OrderService.getItemByIdServiceFeign ip is " + ip);
+        KeyHolder.putIP(ip);
         Item item = feignInterface.getItemByOrderId(id);
         return item;
     }
 
-    public Item getItemByIdServiceHystrix(int id) {
+    public Item getItemByIdServiceHystrix(int id, String ip) {
         Item item = new Item();
         item.setId(0);
         item.setName("请求出错-hystrix");

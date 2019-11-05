@@ -14,10 +14,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableHystrix
 @EnableFeignClients
-public class OrderServiceApp
-{
-    public static void main( String[] args )
-    {
+public class OrderServiceApp {
+    public static void main( String[] args ) {
         SpringApplication.run(OrderServiceApp.class);
     }
 }
