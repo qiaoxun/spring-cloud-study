@@ -1,6 +1,6 @@
 package com.study.service;
 
-import com.loadbalance.KeyHolder;
+import com.study.loadbalance.KeyHolder;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.study.domain.Item;
 import com.study.feign.ItemFeignInterface;

@@ -1,4 +1,4 @@
-package com.loadbalance;
+package com.study.loadbalance;
 
 public class KeyHolder {
     private static final ThreadLocal<String> ipThreadLocal = new ThreadLocal<>();
@@ -11,7 +11,7 @@ public class KeyHolder {
         return ipThreadLocal.get();
     }
 
-    public static void remote() {
+    public static void remove() {
         ipThreadLocal.remove();
     }
 }

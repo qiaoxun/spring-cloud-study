@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: order-service
+  cloud:
+    loadbalancer:
+      retry:
+        enable: false
 
 eureka:
   client:
@@ -18,4 +22,5 @@ eureka:
 
 item-service:
   ribbon:
-    NFLoadBalancerRuleClassName: com.loadbalance.MyLoadBalance
+    NFLoadBalancerRuleClassName: com.study.loadbalance.MyLoadBalance
+    MaxAutoRetries: 5
