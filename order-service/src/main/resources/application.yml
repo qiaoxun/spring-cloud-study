@@ -23,4 +23,8 @@ eureka:
 item-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.study.loadbalance.MyLoadBalance
-    MaxAutoRetries: 5
+    OkToRetryOnAllOperations: true
+    ConnectTimeout: 250
+    ReadTimeout: 1000
+    MaxAutoRetriesNextServer: 2
+    MaxAutoRetries: 2
