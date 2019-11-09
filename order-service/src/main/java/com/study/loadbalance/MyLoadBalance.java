@@ -26,7 +26,7 @@ public class MyLoadBalance extends AbstractLoadBalancerRule {
     public Server choose(ILoadBalancer lb, Object key) {
         String ip = KeyHolder.getIP();
         logger.info("MyLoadBalance.choose ip is " + ip);
-        KeyHolder.remove();
+//        KeyHolder.remove();
         if (StringUtils.isNotBlank(ip)) {
             List<Server> serverList = lb.getAllServers();
             Optional<Server> serverOptional = serverList.stream().filter(server -> {

@@ -3,7 +3,9 @@ package com.study.controller;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.study.domain.Item;
 import com.study.domain.Order;
+import com.study.domain.ServerConfConfigure;
 import com.study.feign.ItemFeignInterface;
+import com.study.loadbalance.KeyHolder;
 import com.study.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.Max;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,7 +33,8 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-
+    @Autowired
+    private ItemFeignInterface itemFeignInterface;
 
     @GetMapping("/getOrderById/{id}")
     public Order getOrderById(@PathVariable int id) {
@@ -102,6 +106,36 @@ public class OrderController {
         return order;
     }
 
+    @GetMapping("/getServerConfConfigure")
+    public ServerConfConfigure getServerConfConfigure() {
+        KeyHolder.putIP("127.0.0.1");
+        return itemFeignInterface.getServerConfConfigure();
+    }
+
+    @GetMapping("/updateServerConf")
+    public ServerConfConfigure updateServerConf() {
+        KeyHolder.putIP("127.0.0.1");
+        ServerConfConfigure serverConfConfigure = new ServerConfConfigure();
+        List<String> addList = new ArrayList<>();
+        addList.add("add");
+        addList.add("add1");
+        addList.add("add2");
+        serverConfConfigure.setAddList(addList);
+
+        List<String> updateList = new ArrayList<>();
+        updateList.add("update");
+        updateList.add("update1");
+        updateList.add("update2");
+        serverConfConfigure.setUpdateList(updateList);
+
+        List<String> removeList = new ArrayList<>();
+        removeList.add("remove");
+        removeList.add("remove1");
+        removeList.add("remove2");
+        serverConfConfigure.setRemoveList(removeList);
+
+        return itemFeignInterface.updateServerConf(serverConfConfigure);
+    }
 
 
 }
