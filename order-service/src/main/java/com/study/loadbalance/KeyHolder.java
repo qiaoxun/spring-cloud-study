@@ -12,6 +12,6 @@ public class KeyHolder {
     }
 
     public static void remove() {
-        //ipThreadLocal.remove();
+        ipThreadLocal.remove();
     }
 }
