@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface ItemFeignInterface {
 
     @GetMapping("/item/getItemByOrderId/{orderId}")
-    Item getItemByOrderId(@PathVariable int orderId);
+    Item getItemByOrderId(@PathVariable("orderId") int orderId);
 
     @PostMapping("/item/getServerConfConfigure")
     ServerConfConfigure getServerConfConfigure();
