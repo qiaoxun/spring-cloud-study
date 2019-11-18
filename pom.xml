@@ -15,6 +15,8 @@
       <module>api-gateway</module>
       <module>config-server</module>
       <module>common</module>
+        <module>zipkin-server</module>
+        <module>zipkin-server</module>
     </modules>
 
     <parent>
@@ -34,9 +36,12 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <dependencies>
-
-    </dependencies>
+<!--    <dependencies>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-zipkin</artifactId>-->
+<!--        </dependency>-->
+<!--    </dependencies>-->
 
     <dependencyManagement>
         <dependencies>
