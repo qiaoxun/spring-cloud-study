@@ -56,8 +56,9 @@
             <version>2.0.1.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <groupId>com.study</groupId>
+            <artifactId>zipkin-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

@@ -17,6 +17,7 @@
       <module>common</module>
         <module>zipkin-server</module>
         <module>zipkin-server</module>
+        <module>zipkin-client</module>
     </modules>
 
     <parent>
