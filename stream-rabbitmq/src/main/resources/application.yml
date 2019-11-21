@@ -1,0 +1,20 @@
+server:
+  port: 8899
+
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      default:
+        contentType: application/json
+      bindings:
+        mqSpringStreamProducer:
+          destination: MQ_SPRING_STREAM_BEGIN
+          exchangeType: topic
+        mqSpringStreamConsumer:
+          destination: MQ_SPRING_STREAM_BEGIN
+          group: PAAS_MYSQL_PROVIDER

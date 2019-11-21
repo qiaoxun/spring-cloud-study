@@ -18,6 +18,7 @@
         <module>zipkin-server</module>
         <module>zipkin-server</module>
         <module>zipkin-client</module>
+        <module>stream-rabbitmq</module>
     </modules>
 
     <parent>
