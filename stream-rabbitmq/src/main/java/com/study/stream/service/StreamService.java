@@ -1,7 +1,6 @@
 package com.study.stream.service;
 
 import com.study.stream.channel.SpringStreamChannel;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
@@ -9,9 +8,6 @@ import org.springframework.messaging.support.MessageBuilder;
 
 @EnableBinding(SpringStreamChannel.class)
 public class StreamService {
-
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
 
     @Autowired
     private SpringStreamChannel channel;
