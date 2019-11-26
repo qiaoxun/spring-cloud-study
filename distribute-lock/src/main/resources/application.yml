@@ -1,0 +1,6 @@
+spring:
+  database:
+    url:
+    username: root
+    password: 123456
+    driver-class-name:

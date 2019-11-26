@@ -19,6 +19,7 @@
         <module>zipkin-server</module>
         <module>zipkin-client</module>
         <module>stream-rabbitmq</module>
+        <module>distribute-lock</module>
     </modules>
 
     <parent>
