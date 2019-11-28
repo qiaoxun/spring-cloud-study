@@ -2,7 +2,7 @@ package com.study.distribute.lock.domain;
 
 import java.sql.Timestamp;
 
-public class LocksInfo {
+public class LockerInfo {
     private int id;
     private String resourceName;
     private String nodeInfo;
@@ -65,5 +65,18 @@ public class LocksInfo {
 
     public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "LocksInfo{" +
+                "id=" + id +
+                ", resourceName='" + resourceName + '\'' +
+                ", nodeInfo='" + nodeInfo + '\'' +
+                ", count=" + count +
+                ", description='" + description + '\'' +
+                ", updateTime=" + updateTime +
+                ", createTime=" + createTime +
+                '}';
     }
 }
