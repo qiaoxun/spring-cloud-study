@@ -52,8 +52,8 @@ public class Tester {
     public void testLocker() {
         String resourceName = "com.study.distribute.lock.test.Tester.testLocker";
 
-        Thread thread = new Thread(new TestHelper(resourceName, "thread",locker));
-        Thread thread1 = new Thread(new TestHelper(resourceName, "thread1", locker));
+        Thread thread = new Thread(new TestHelper(resourceName, "thread", 0, locker));
+        Thread thread1 = new Thread(new TestHelper(resourceName, "thread1", 0, locker));
         thread.start();
         thread1.start();
 
@@ -71,18 +71,20 @@ public class Tester {
 class TestHelper implements Runnable {
     private String resourceName;
     private String nodeInfo;
+    private long timeout;
     private MySQLLocker locker;
 
-    public TestHelper(String resourceName, String nodeInfo, MySQLLocker locker) {
+    public TestHelper(String resourceName, String nodeInfo, long timeout, MySQLLocker locker) {
         this.resourceName = resourceName;
         this.nodeInfo = nodeInfo;
+        this.timeout = timeout;
         this.locker = locker;
     }
 
     @Override
     public void run() {
         System.out.println("nodeInfo " + nodeInfo + " prepare to get lock...");
-        locker.lock(resourceName, nodeInfo);
+        locker.lock(resourceName, nodeInfo, timeout);
         System.out.println("nodeInfo " + nodeInfo + " I'm inside locker");
         try {
             Thread.sleep(1000 * 5);

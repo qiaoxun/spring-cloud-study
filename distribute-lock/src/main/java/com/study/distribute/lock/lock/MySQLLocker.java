@@ -10,19 +10,28 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.concurrent.locks.LockSupport;
 
+/**
+ * https://juejin.im/post/5bbb0d8df265da0abd3533a5
+ */
 @Component
 public class MySQLLocker {
 
     @Autowired
     private LockerMapper lockerMapper;
 
-    public void lock(String resourceName, String nodeInfo) {
+    public void lock(String resourceName, String nodeInfo, long timeout) {
+        long begin = System.currentTimeMillis();
         while (true) {
             if (lockInside(resourceName, nodeInfo)) {
                 return;
             }
             // 3 ms 后重试
             LockSupport.parkNanos(1000 * 1000 * 3);
+            long end = System.currentTimeMillis();
+            long duration = end - begin;
+            if (timeout > 0 && duration > timeout) {
+                throw new RuntimeException("Didn't get lock due to timeout");
+            }
         }
     }
 
@@ -33,15 +42,12 @@ public class MySQLLocker {
         throw new RuntimeException("Release lock on resource " + resourceName + " node " + nodeInfo + " failed!");
     }
 
-
-    public boolean tryLock() {
-
-        return false;
+    public boolean tryLock(String resourceName, String nodeInfo) {
+        return lockInside(resourceName, nodeInfo);
     }
 
-    public boolean tryRelease() {
-
-        return false;
+    public boolean tryRelease(String resourceName, String nodeInfo) {
+        return releaseInside(resourceName, nodeInfo);
     }
 
     @Transactional
@@ -92,5 +98,4 @@ public class MySQLLocker {
             return false;
         }
     }
-
 }
