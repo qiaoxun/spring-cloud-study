@@ -1,6 +1,6 @@
-package com.study.distribute.lock.mapper;
+package com.study.distribute.lock.mysql.mapper;
 
-import com.study.distribute.lock.domain.LockerInfo;
+import com.study.distribute.lock.mysql.domain.LockerInfo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.study.distribute.lock.domain;
+package com.study.distribute.lock.mysql.domain;
 
 import java.sql.Timestamp;
 

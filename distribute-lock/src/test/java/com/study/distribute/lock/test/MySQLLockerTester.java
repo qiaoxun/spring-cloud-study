@@ -1,8 +1,8 @@
 package com.study.distribute.lock.test;
 
-import com.study.distribute.lock.domain.LockerInfo;
-import com.study.distribute.lock.lock.MySQLLocker;
-import com.study.distribute.lock.mapper.LockerMapper;
+import com.study.distribute.lock.mysql.domain.LockerInfo;
+import com.study.distribute.lock.mysql.lock.MySQLLocker;
+import com.study.distribute.lock.mysql.mapper.LockerMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class Tester {
+public class MySQLLockerTester {
 
     @Autowired
     private LockerMapper lockerMapper;

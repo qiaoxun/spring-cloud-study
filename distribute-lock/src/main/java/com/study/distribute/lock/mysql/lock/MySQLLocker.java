@@ -1,7 +1,7 @@
-package com.study.distribute.lock.lock;
+package com.study.distribute.lock.mysql.lock;
 
-import com.study.distribute.lock.domain.LockerInfo;
-import com.study.distribute.lock.mapper.LockerMapper;
+import com.study.distribute.lock.mysql.domain.LockerInfo;
+import com.study.distribute.lock.mysql.mapper.LockerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
