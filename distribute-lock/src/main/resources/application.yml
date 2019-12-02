@@ -4,4 +4,14 @@ spring:
     url: jdbc:mysql://localhost:3306/roombook?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
     username: root
     password: 123456
-
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    jedis:
+      pool:
+        max-idle: 6
+        max-active: 32
+        max-wait: 100
+        min-idle: 4
