@@ -15,11 +15,9 @@
       <module>api-gateway</module>
       <module>config-server</module>
       <module>common</module>
-        <module>zipkin-server</module>
-        <module>zipkin-server</module>
-        <module>zipkin-client</module>
-        <module>stream-rabbitmq</module>
-        <module>distribute-lock</module>
+      <module>zipkin-client</module>
+      <module>stream-rabbitmq</module>
+      <module>distributed-lock</module>
     </modules>
 
     <parent>
